@@ -17,6 +17,22 @@ import org.springframework.stereotype.Component;
 @Configuration
 public class WechatMpConfig {
 
+    /**
+     * 静默授权
+     *
+     * 静默授权：用户进入页面后自动授权并跳转回页面，这种授权对用户无感知。通过这种授权我们只能获取到用户的 openid，无法获得用户的其他信息。
+     * 使用场景：只需要标识该用户，而不需要收集其他信息的场景都可以使用。比如投票、点赞等场景。
+     * scope: snsapi_base
+     *
+     * 主动授权
+     *
+     * 主动授权：用户进入页面后会有授权弹窗，需要手动同意。该方试用来获取用户的基本信息
+     * 注意：**对于已关注公众号的用户，**用户从公众号的会话或者自定义菜单进入本公众号的网页授权页，即使是scope: snsapi_userinfo，也是静默授权，用户无感知。
+     * scope: snsapi_userinfo
+     *
+
+     */
+
     @Autowired
     private WechatMpPropertires wechatMpPropertires;
 
