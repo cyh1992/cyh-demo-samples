@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+<!--    &lt;!&ndash; 再默认方式下  bean的id固定为 processEngineConfiguration &ndash;&gt;-->
+<!--    <bean id ="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">-->
+<!--        &lt;!&ndash; &ndash;&gt;-->
+<!--        <property name ="jdbcDriver" value ="com.mysql.jdbc.Driver"/>-->
+<!--        <property name ="jdbcUrl" value ="jdbc:mysql://localhost:3306/test_demo"/>-->
+<!--        <property name ="jdbcUsername" value ="root"/>-->
+<!--        <property name ="jdbcPassword" value ="root"/>-->
+<!--&lt;!&ndash;        activiti 数据库表在生成时的策略  true 如果数据库已经存在相应的表，那么直接使用，如果不存在那么会创建&ndash;&gt;-->
+<!--        <property name="databaseSchemaUpdate" value="true"/>-->
+<!--    </bean>-->
+
+    <bean id ="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name ="driverClassName" value ="com.mysql.jdbc.Driver"/>
+        <property name ="url" value ="jdbc:mysql://localhost:3306/test_demo"/>
+        <property name ="username" value ="root"/>
+        <property name ="password" value ="root"/>
+        <property name="minIdle" value="1" />
+        <property name="maxActive" value="3" />
+        <property name="maxWait" value="60000" />
+    </bean>
+
+    <bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="databaseSchemaUpdate" value="true"/>
+    </bean>
+
+</beans>
