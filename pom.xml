@@ -9,6 +9,7 @@
         <module>jwt-demo</module>
         <module>activit_demo</module>
         <module>weixin-login</module>
+        <module>oAuth2-auth-server</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
